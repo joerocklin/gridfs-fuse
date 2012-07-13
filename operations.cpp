@@ -304,7 +304,11 @@ int gridfs_listxattr(const char* path, char* list, size_t size)
   return len;
 }
 
-int gridfs_getxattr(const char* path, const char* name, char* value, size_t size)
+#ifdef __APPLE__
+	int gridfs_getxattr(const char* path, const char* name, char* value, size_t size, uint32_t position)
+#else
+	int gridfs_getxattr(const char* path, const char* name, char* value, size_t size)
+#endif /* __APPLE__ */
 {
   if(strcmp(path, "/") == 0) {
     return -ENOATTR;
@@ -353,8 +357,13 @@ int gridfs_getxattr(const char* path, const char* name, char* value, size_t size
   return len;
 }
 
-int gridfs_setxattr(const char* path, const char* name, const char* value,
-          size_t size, int flags)
+#ifdef __APPLE__
+	int gridfs_setxattr(const char* path, const char* name, const char* value,
+            size_t size, int flags, uint32_t position)
+#else
+	int gridfs_setxattr(const char* path, const char* name, const char* value,
+            size_t size, int flags)
+#endif /* __APPLE__ */
 {
   return -ENOTSUP;
 }

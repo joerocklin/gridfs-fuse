@@ -46,7 +46,20 @@ int gridfs_unlink(const char* path);
 
 int gridfs_listxattr(const char* path, char* list, size_t size);
 
-int gridfs_getxattr(const char* path, const char* name, char* value, size_t size);
+// Matching prototypes used in fuse4x
+#ifdef __APPLE__
+	int gridfs_getxattr(const char* path, const char* name, char* value, size_t size, uint32_t position);
+#else
+	int gridfs_getxattr(const char* path, const char* name, char* value, size_t size);
+#endif /* __APPLE__ */
+
+#ifdef __APPLE__
+	int gridfs_setxattr(const char* path, const char* name, const char* value,
+            size_t size, int flags, uint32_t position);
+#else
+	int gridfs_setxattr(const char* path, const char* name, const char* value,
+            size_t size, int flags);
+#endif /* __APPLE__ */
 
 int gridfs_setxattr(const char* path, const char* name, const char* value,
           size_t size, int flags);
