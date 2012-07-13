@@ -27,7 +27,7 @@
 #include <mongo/client/gridfs.h>
 #include <mongo/client/connpool.h>
 #include <mongo/client/dbclient.h>
-#include <mongo/util/hostandport.h>
+#include <mongo/util/net/hostandport.h>
 
 #ifdef __linux__
 #include <sys/xattr.h>

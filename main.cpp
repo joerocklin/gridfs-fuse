@@ -18,7 +18,7 @@
 #include "operations.h"
 #include "options.h"
 #include "utils.h"
-#include <mongo/util/hostandport.h>
+#include <mongo/util/net/hostandport.h>
 #include <mongo/client/dbclient.h>
 #include <cstring>
 #include <stdio.h>
