@@ -470,6 +470,6 @@ int gridfs_rename(const char* old_path, const char* new_path)
 
 int gridfs_mknod(const char *path, mode_t mode, dev_t rdev)
 {
-
-  fprintf(stderr, "MKNOD: %s\n", path); 
+  fprintf(stderr, "MKNOD: %s\n", path);
+  return -ENOTSUP;
 }
